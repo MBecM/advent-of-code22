@@ -1,7 +1,7 @@
 package com.advent.d1
 
 import com.advent.readLinesFromFile
-import java.util.Comparator
+import java.util.*
 
 /**
  * @author Mateusz Becker
@@ -10,23 +10,28 @@ fun main() {
 //    val input = Day1.exampleData()
     val input = readLinesFromFile("input_d1.txt")
 
-    val sortedCals = sortedSetOf<Int>(Comparator.reverseOrder())
+    val sortedCals = PriorityQueue<Int>(4)
+
+    fun addAndFixSize(acc: Int) {
+        sortedCals += acc
+        if (sortedCals.size > 3) {
+            sortedCals.poll()
+        }
+    }
 
     var acc = 0
     for (i in input) {
         if (i.isEmpty()) {
-            sortedCals += acc
+            addAndFixSize(acc)
             acc = 0
         } else {
             acc += i.toInt()
         }
     }
-    sortedCals += acc
+    addAndFixSize(acc)
 
-    println("Day1 part 1 answer: ${sortedCals.take(1).sum()}")
-    println("Day1 part 2 answer: ${sortedCals.take(3).sum()}")
-
-
+    println("Day1 part 1 answer: ${sortedCals.max()}")
+    println("Day1 part 2 answer: ${sortedCals.sum()}")
 }
 
 object Day1 {
