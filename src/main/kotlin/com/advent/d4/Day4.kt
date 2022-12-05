@@ -31,7 +31,7 @@ fun main() {
             acc + i
         }
 
-    println("Day3 part 1 answer: $answer1")
+    println("Day4 part 1 answer: $answer1")
 
     val answer2 = ranges
         .fold(0) { acc, l ->
@@ -40,7 +40,7 @@ fun main() {
             acc + i
         }
 
-    println("Day3 part 2 answer: $answer2")
+    println("Day4 part 2 answer: $answer2")
 
 }
 
